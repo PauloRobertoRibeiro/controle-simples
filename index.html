@@ -1,0 +1,40 @@
+ <!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle Simples</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+  <header>
+    <h1>💰 Controle Simples</h1>
+    <p id="saldo">Saldo: €0,00</p>
+  </header>
+
+  <main>
+    <section class="add">
+      <select id="tipo">
+        <option value="entrada">Entrada</option>
+        <option value="saida">Saída</option>
+        <option value="divida">Dívida</option>
+      </select>
+
+      <input type="number" id="valor" placeholder="Valor (€)">
+      <input type="text" id="descricao" placeholder="Descrição">
+
+      <button onclick="adicionar()">Adicionar</button>
+    </section>
+
+    <section class="lista">
+      <h2>Histórico</h2>
+      <ul id="historico"></ul>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
