@@ -21,7 +21,11 @@
       <button onclick="mudarIdioma('en')">EN</button>
     </div>
 
+    <!-- Saldo -->
     <p id="saldo">Saldo: €0,00</p>
+
+    <!-- Total de dívidas pendentes -->
+    <p id="dividas-pendentes">Dívidas pendentes: €0,00</p>
   </header>
 
   <main>
@@ -35,7 +39,7 @@
       <input type="number" id="valor" placeholder="Valor (€)">
       <input type="text" id="descricao" placeholder="Descrição">
 
-      <button onclick="adicionar()">Adicionar</button>
+      <button onclick="adicionar()" class="botao-adicionar">Adicionar</button>
     </section>
 
     <section class="lista">
@@ -45,5 +49,14 @@
   </main>
 
   <script src="app.js"></script>
+
+  <!-- Registro do Service Worker para PWA -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker registrado com sucesso'))
+        .catch(err => console.log('Erro ao registrar Service Worker:', err));
+    }
+  </script>
 </body>
 </html>

@@ -18,7 +18,9 @@ const traducoes = {
     alertaValor: "Preencha o valor e a descrição",
     confirmarApagar: "Quer mesmo apagar este item?",
     placeholderValor: "Valor (€)",
-    placeholderDescricao: "Descrição"
+    placeholderDescricao: "Descrição",
+    dividasPendentes: "Dívidas pendentes",
+    pagamentoDivida: "Pagamento de dívida"
   },
   es: {
     saldo: "Saldo",
@@ -34,7 +36,9 @@ const traducoes = {
     alertaValor: "Complete el valor y la descripción",
     confirmarApagar: "¿Desea borrar este elemento?",
     placeholderValor: "Valor (€)",
-    placeholderDescricao: "Descripción"
+    placeholderDescricao: "Descripción",
+    dividasPendentes: "Deudas pendientes",
+    pagamentoDivida: "Pago de deuda"
   },
   en: {
     saldo: "Balance",
@@ -50,12 +54,17 @@ const traducoes = {
     alertaValor: "Fill in value and description",
     confirmarApagar: "Do you really want to delete this item?",
     placeholderValor: "Value (€)",
-    placeholderDescricao: "Description"
+    placeholderDescricao: "Description",
+    dividasPendentes: "Pending debts",
+    pagamentoDivida: "Debt payment"
   }
 };
 
 let idiomaAtual = localStorage.getItem('idioma') || 'pt';
 
+// ====================
+// Mudar idioma
+// ====================
 function mudarIdioma(idioma) {
   idiomaAtual = idioma;
   localStorage.setItem('idioma', idiomaAtual);
@@ -69,16 +78,14 @@ function mudarIdioma(idioma) {
   selectTipo.options[1].text = traducoes[idiomaAtual].saida;
   selectTipo.options[2].text = traducoes[idiomaAtual].divida;
 
-
-  // Atualiza o botão "Adicionar"
+  // Atualiza botão Adicionar
   document.querySelector('section.add button').textContent = traducoes[idiomaAtual].adicionar;
-
 
   atualizar();
 }
 
 // ====================
-// Funções principais
+// Adicionar transação
 // ====================
 function adicionar() {
   const tipo = document.getElementById('tipo').value;
@@ -105,11 +112,15 @@ function adicionar() {
   atualizar();
 }
 
+// ====================
+// Atualizar tela
+// ====================
 function atualizar() {
   const lista = document.getElementById('historico');
   lista.innerHTML = '';
 
   let saldo = 0;
+  let totalDividas = 0;
 
   dados.forEach((item, index) => {
     const li = document.createElement('li');
@@ -125,14 +136,7 @@ function atualizar() {
     // Botão apagar
     const btnApagar = document.createElement('button');
     btnApagar.textContent = traducoes[idiomaAtual].apagar;
-    btnApagar.style.marginLeft = "10px";
-    btnApagar.style.background = "#e74c3c";
-    btnApagar.style.color = "white";
-    btnApagar.style.border = "none";
-    btnApagar.style.padding = "2px 6px";
-    btnApagar.style.borderRadius = "4px";
-    btnApagar.style.cursor = "pointer";
-
+    btnApagar.classList.add("botao-apagar");
     btnApagar.onclick = () => {
       if (confirm(traducoes[idiomaAtual].confirmarApagar)) {
         dados.splice(index, 1);
@@ -140,25 +144,16 @@ function atualizar() {
         atualizar();
       }
     };
-
     li.appendChild(btnApagar);
 
     // Botão “Marcar como paga” para dívidas pendentes
     if (item.tipo === 'divida' && !item.paga) {
       const btnPagar = document.createElement('button');
       btnPagar.textContent = traducoes[idiomaAtual].marcarPaga;
-      btnPagar.style.marginLeft = "10px";
-      btnPagar.style.background = "#27ae60";
-      btnPagar.style.color = "white";
-      btnPagar.style.border = "none";
-      btnPagar.style.padding = "2px 6px";
-      btnPagar.style.borderRadius = "4px";
-      btnPagar.style.cursor = "pointer";
-
+      btnPagar.classList.add("botao-pagar");
       btnPagar.onclick = () => {
         marcarComoPaga(index);
       };
-
       li.appendChild(btnPagar);
     }
 
@@ -167,25 +162,34 @@ function atualizar() {
     // Calcula saldo: só entrada/saída
     if (item.tipo === 'entrada') saldo += item.valor;
     else if (item.tipo === 'saida') saldo -= item.valor;
-    // dívida não altera saldo até ser paga
+
+    // Soma dívidas pendentes
+    if (item.tipo === 'divida' && !item.paga) totalDividas += item.valor;
   });
 
+  // Atualiza saldo
   document.getElementById('saldo').textContent =
     `${traducoes[idiomaAtual].saldo}: €${saldo.toFixed(2)}`;
+
+  // Atualiza total de dívidas pendentes
+  document.getElementById('dividas-pendentes').textContent =
+    `${traducoes[idiomaAtual].dividasPendentes}: €${totalDividas.toFixed(2)}`;
 }
 
-// Função para marcar dívida como paga
+// ====================
+// Marcar dívida como paga
+// ====================
 function marcarComoPaga(index) {
   const divida = dados[index];
 
   if (divida.tipo === 'divida' && !divida.paga) {
     divida.paga = true;
 
-    // Cria uma entrada equivalente
+    // Cria uma entrada equivalente com descrição traduzida
     dados.push({
       tipo: 'entrada',
       valor: divida.valor,
-      descricao: `Pagamento de dívida: ${divida.descricao}`,
+      descricao: `${traducoes[idiomaAtual].pagamentoDivida}: ${divida.descricao}`,
       data: new Date().toLocaleDateString()
     });
 
@@ -194,6 +198,8 @@ function marcarComoPaga(index) {
   }
 }
 
+// ====================
 // Inicializa a tela
+// ====================
 mudarIdioma(idiomaAtual);
 atualizar();

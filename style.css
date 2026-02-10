@@ -1,67 +1,146 @@
- * {
-  box-sizing: border-box;
-}
-
-body {
+/* ===== Reset básico ===== */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  color: #333;
 }
 
-header {
-  background: #2ecc71;
-  color: white;
+/* ===== Body ===== */
+body {
+  background-color: #f9f9f9;
+  color: #333;
   padding: 20px;
+}
+
+/* ===== Header ===== */
+header {
   text-align: center;
+  margin-bottom: 20px;
 }
 
 header h1 {
-  margin: 0;
-}
-
-#saldo {
-  margin-top: 10px;
-  font-size: 18px;
-}
-
-.add {
-  background: white;
-  padding: 15px;
-  margin: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-}
-
-.add select,
-.add input {
-  width: 100%;
-  padding: 10px;
+  font-size: 2em;
   margin-bottom: 10px;
-  border-radius: 6px;
+}
+
+#seletor-idioma button {
+  margin: 0 5px;
+  padding: 3px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #3498db;
+  color: white;
+}
+
+#saldo, #dividas-pendentes {
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+/* ===== Seção adicionar ===== */
+.add {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.add select, .add input {
+  padding: 5px 10px;
+  font-size: 1em;
   border: 1px solid #ccc;
-  font-size: 16px;
+  border-radius: 4px;
 }
 
 .add button {
-  width: 100%;
-  padding: 12px;
-  background: #2ecc71;
-  border: none;
-  border-radius: 6px;
+  padding: 5px 12px;
+  font-size: 1em;
+  border-radius: 4px;
+}
+
+/* Botão Adicionar */
+.botao-adicionar {
+  background: #3498db;
   color: white;
-  font-size: 16px;
+  border: none;
   cursor: pointer;
 }
 
-.add button:hover {
-  background: #27ae60;
+.botao-adicionar:hover {
+  background: #2980b9;
 }
 
+/* ===== Histórico ===== */
 .lista {
-  margin: 15px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .lista h2 {
+  text-align: center;
   margin-bottom: 10px;
+}
+
+#historico {
+  list-style: none;
+  padding: 0;
+}
+
+#historico li {
+  background: white;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Botões Apagar e Pagar */
+.botao-apagar {
+  margin-left: 10px;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.botao-apagar:hover {
+  background: #c0392b;
+}
+
+.botao-pagar {
+  margin-left: 10px;
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.botao-pagar:hover {
+  background: #1e8449;
+}
+
+/* ===== Responsividade ===== */
+@media (max-width: 600px) {
+  .add {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #historico li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #historico li button {
+    margin: 5px 0 0 0;
+  }
 }
