@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
@@ -12,6 +12,15 @@
 
   <header>
     <h1>💰 Controle Simples</h1>
+
+    <!-- Seletor de idioma -->
+    <div id="seletor-idioma" style="margin-bottom: 10px;">
+      🌍
+      <button onclick="mudarIdioma('pt')">PT</button> | 
+      <button onclick="mudarIdioma('es')">ES</button> | 
+      <button onclick="mudarIdioma('en')">EN</button>
+    </div>
+
     <p id="saldo">Saldo: €0,00</p>
   </header>
 
@@ -30,7 +39,7 @@
     </section>
 
     <section class="lista">
-      <h2>Histórico</h2>
+      <h2 id="historico-titulo">Histórico</h2>
       <ul id="historico"></ul>
     </section>
   </main>
