@@ -50,14 +50,23 @@ header h1 {
 }
 
 /* Seletor idioma */
+#seletor-idioma {
+  display: flex;
+  justify-content: center; /* centraliza os botões */
+  gap: 5px;                /* espaço entre os botões */
+  flex-wrap: wrap;          /* quebra linha se não couber */
+  margin-bottom: 10px;
+}
+
 #seletor-idioma button {
   background: white;
   border: none;
-  padding: 5px 10px;
-  margin: 0 3px;
+  padding: 6px 12px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 12px;
+  min-width: 40px; /* largura mínima igual para alinhamento */
+  text-align: center;
   transition: 0.2s;
 }
 
@@ -157,5 +166,10 @@ header h1 {
 @media (max-width: 480px) {
   header, main {
     max-width: 100%;
+  }
+
+  /* Ajuste dos botões de idioma no celular */
+  #seletor-idioma {
+    justify-content: center; /* garante centralização */
   }
 }
