@@ -8,7 +8,7 @@ const traducoes = {
     saldo: "Saldo",
     entrada: "Entrada",
     saida: "Saída",
-    divida: "Dívida",
+    divida: "Valor a Receber",
     adicionar: "Adicionar",
     historico: "Histórico",
     dividaPendente: "Pendente",
@@ -19,14 +19,14 @@ const traducoes = {
     confirmarApagar: "Quer mesmo apagar este item?",
     placeholderValor: "Valor (€)",
     placeholderDescricao: "Descrição",
-    dividasPendentes: "Dívidas pendentes",
-    pagamentoDivida: "Pagamento de dívida"
+    dividasPendentes: "Valores a Receber",
+    pagamentoDivida: "Recebimento"
   },
   es: {
     saldo: "Saldo",
     entrada: "Entrada",
     saida: "Salida",
-    divida: "Deuda",
+    divida: "Valor por cobrar",
     adicionar: "Agregar",
     historico: "Historial",
     dividaPendente: "Pendiente",
@@ -37,14 +37,14 @@ const traducoes = {
     confirmarApagar: "¿Desea borrar este elemento?",
     placeholderValor: "Valor (€)",
     placeholderDescricao: "Descripción",
-    dividasPendentes: "Deudas pendientes",
-    pagamentoDivida: "Pago de deuda"
+    dividasPendentes: "Valores por Cobrar",
+    pagamentoDivida: "Cobro"
   },
   en: {
     saldo: "Balance",
     entrada: "Income",
     saida: "Expense",
-    divida: "Debt",
+    divida: "Amount to Receive",
     adicionar: "Add",
     historico: "History",
     dividaPendente: "Pending",
@@ -55,8 +55,8 @@ const traducoes = {
     confirmarApagar: "Do you really want to delete this item?",
     placeholderValor: "Value (€)",
     placeholderDescricao: "Description",
-    dividasPendentes: "Pending debts",
-    pagamentoDivida: "Debt payment"
+    dividasPendentes: "Amounts to Receive",
+    pagamentoDivida: "Payment Received"
   }
 };
 
@@ -135,7 +135,7 @@ function atualizar() {
 
     // Botão apagar
     const btnApagar = document.createElement('button');
-    btnApagar.textContent = traducoes[idiomaAtual].apagar;
+    btnApagar.textContent = traducoes[idiomaAtual].apagar; 
     btnApagar.classList.add("botao-apagar");
     btnApagar.onclick = () => {
       if (confirm(traducoes[idiomaAtual].confirmarApagar)) {

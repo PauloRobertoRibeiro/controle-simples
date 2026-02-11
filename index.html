@@ -7,6 +7,8 @@
 
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
 </head>
 <body>
 
@@ -25,7 +27,7 @@
     <p id="saldo">Saldo: €0,00</p>
 
     <!-- Total de dívidas pendentes -->
-    <p id="dividas-pendentes">Dívidas pendentes: €0,00</p>
+    <p id="dividas-pendentes">Valores a Receber: €0,00</p>
   </header>
 
   <main>
@@ -33,7 +35,8 @@
       <select id="tipo">
         <option value="entrada">Entrada</option>
         <option value="saida">Saída</option>
-        <option value="divida">Dívida</option>
+        <option value="divida" id="opcao-divida">Valores a Receber</option>
+
       </select>
 
       <input type="number" id="valor" placeholder="Valor (€)">
