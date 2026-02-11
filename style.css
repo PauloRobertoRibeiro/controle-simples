@@ -65,9 +65,9 @@ header h1 {
   border-radius: 6px;
   cursor: pointer;
   font-size: 12px;
-  flex: 1 1 30%;          /* cada botão ocupa ~30% do espaço disponível */
-  min-width: 60px;         /* largura mínima para não encostar */
-  max-width: 80px;         /* largura máxima para não esticar demais */
+  flex: 1 1 30%;          /* cada botão cresce/encolhe proporcionalmente */
+  min-width: 50px;         /* largura mínima */
+  max-width: 80px;         /* largura máxima */
   text-align: center;
   transition: 0.2s;
 }
@@ -170,10 +170,10 @@ header h1 {
     max-width: 100%;
   }
 
-  /* Ajuste dos botões de idioma no celular vertical */
+  /* Botões de idioma menores no celular vertical */
   #seletor-idioma button {
-    flex: 1 1 28%;     /* ocupa menos espaço */
-    min-width: 50px;   /* largura mínima menor */
-    font-size: 11px;   /* fonte menor para caber na tela */
+    flex: 1 1 28%;   /* ocupa menos espaço */
+    min-width: 45px; /* largura mínima menor */
+    font-size: 11px; /* fonte menor */
   }
 }
