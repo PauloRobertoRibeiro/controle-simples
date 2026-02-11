@@ -8,26 +8,24 @@
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
-
 </head>
 <body>
 
   <header>
     <h1>💰 Controle Simples</h1>
 
-    <!-- Seletor de idioma -->
-    <div id="seletor-idioma" style="margin-bottom: 10px;">
-      🌍
-      <button onclick="mudarIdioma('pt')">PT</button> | 
-      <button onclick="mudarIdioma('es')">ES</button> | 
-      <button onclick="mudarIdioma('en')">EN</button>
+    <!-- Saldo e Valores a Receber -->
+    <div id="cabecalho-info">
+      <p id="saldo">Saldo: €0,00</p>
+      <p id="dividas-pendentes">Valores a Receber: €0,00</p>
     </div>
 
-    <!-- Saldo -->
-    <p id="saldo">Saldo: €0,00</p>
-
-    <!-- Total de dívidas pendentes -->
-    <p id="dividas-pendentes">Valores a Receber: €0,00</p>
+    <!-- Seletor de idioma -->
+    <div id="seletor-idioma">
+      <button onclick="mudarIdioma('pt')">PT</button>
+      <button onclick="mudarIdioma('es')">ES</button>
+      <button onclick="mudarIdioma('en')">EN</button>
+    </div>
   </header>
 
   <main>
@@ -35,8 +33,7 @@
       <select id="tipo">
         <option value="entrada">Entrada</option>
         <option value="saida">Saída</option>
-        <option value="divida" id="opcao-divida">Valores a Receber</option>
-
+        <option value="divida">Valores a Receber</option>
       </select>
 
       <input type="number" id="valor" placeholder="Valor (€)">
