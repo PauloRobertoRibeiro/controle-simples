@@ -1,146 +1,161 @@
-/* ===== Reset básico ===== */
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ===== Body ===== */
 body {
-  background-color: #f9f9f9;
+  background: #f4f7fb;
   color: #333;
+  display: flex;
+  justify-content: center;
   padding: 20px;
 }
 
-/* ===== Header ===== */
+/* Container principal */
+main {
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Header */
 header {
-  text-align: center;
+  width: 100%;
+  max-width: 500px;
+  background: #1e3a8a;
+  color: white;
+  padding: 20px;
+  border-radius: 16px;
   margin-bottom: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 header h1 {
-  font-size: 2em;
+  font-size: 22px;
   margin-bottom: 10px;
 }
 
+#saldo {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+#dividas-pendentes {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* Seletor idioma */
 #seletor-idioma button {
-  margin: 0 5px;
-  padding: 3px 8px;
+  background: white;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  background: #3498db;
-  color: white;
-}
-
-#saldo, #dividas-pendentes {
-  font-size: 1.2em;
-  margin: 5px 0;
-}
-
-/* ===== Seção adicionar ===== */
-.add {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.add select, .add input {
   padding: 5px 10px;
-  font-size: 1em;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.add button {
-  padding: 5px 12px;
-  font-size: 1em;
-  border-radius: 4px;
-}
-
-/* Botão Adicionar */
-.botao-adicionar {
-  background: #3498db;
-  color: white;
-  border: none;
+  margin: 0 3px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+#seletor-idioma button:hover {
+  background: #dbeafe;
+}
+
+/* Caixa adicionar */
+.add {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.add select,
+.add input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.botao-adicionar {
+  background: #2563eb;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .botao-adicionar:hover {
-  background: #2980b9;
+  background: #1d4ed8;
 }
 
-/* ===== Histórico ===== */
-.lista {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
+/* Lista histórico */
 .lista h2 {
-  text-align: center;
   margin-bottom: 10px;
 }
 
 #historico {
   list-style: none;
-  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 #historico li {
   background: white;
-  margin-bottom: 8px;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 15px;
+  border-radius: 14px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  font-size: 14px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 8px;
 }
 
-/* Botões Apagar e Pagar */
-.botao-apagar {
-  margin-left: 10px;
-  background: #e74c3c;
-  color: white;
+/* Botões dentro da lista */
+.botao-apagar,
+.botao-pagar {
+  padding: 6px 10px;
   border: none;
-  padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: 8px;
+  font-size: 12px;
   cursor: pointer;
+  align-self: flex-start;
+  transition: 0.2s;
+}
+
+.botao-apagar {
+  background: #ef4444;
+  color: white;
 }
 
 .botao-apagar:hover {
-  background: #c0392b;
+  background: #dc2626;
 }
 
 .botao-pagar {
-  margin-left: 10px;
-  background: #27ae60;
+  background: #10b981;
   color: white;
-  border: none;
-  padding: 2px 6px;
-  border-radius: 4px;
-  cursor: pointer;
 }
 
 .botao-pagar:hover {
-  background: #1e8449;
+  background: #059669;
 }
 
-/* ===== Responsividade ===== */
-@media (max-width: 600px) {
-  .add {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  #historico li {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  #historico li button {
-    margin: 5px 0 0 0;
+/* Responsivo */
+@media (max-width: 480px) {
+  header, main {
+    max-width: 100%;
   }
 }
