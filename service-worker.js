@@ -1,40 +1,37 @@
-const CACHE_NAME = "controle-simples-v1";
+const CACHE_NAME = "control-smart-v1";
+
 const urlsToCache = [
   "./",
   "./index.html",
-  "./style.css",
-  "./app.js",
-  "./icon-192.png",
-  "./icon-512.png",
-  "./favicon.ico"
+  "./css/style.css",
+  "./js/app.js",
+  "./js/storage.js",
+  "./js/transactions.js",
+  "./js/ui.js",
+  "./js/i18n.js",
+  "./manifest.json"
 ];
 
-self.addEventListener("install", (event) => {
+self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(urlsToCache);
-    })
+    caches.open(CACHE_NAME)
+      .then(cache => cache.addAll(urlsToCache))
   );
 });
 
-self.addEventListener("fetch", (event) => {
+self.addEventListener("fetch", event => {
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
+    caches.match(event.request)
+      .then(response => response || fetch(event.request))
   );
 });
 
-self.addEventListener("activate", (event) => {
-  const cacheWhitelist = [CACHE_NAME];
+self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then((keyList) =>
+    caches.keys().then(keys =>
       Promise.all(
-        keyList.map((key) => {
-          if (!cacheWhitelist.includes(key)) {
-            return caches.delete(key);
-          }
-        })
+        keys.filter(key => key !== CACHE_NAME)
+            .map(key => caches.delete(key))
       )
     )
   );
