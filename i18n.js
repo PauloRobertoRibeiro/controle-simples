@@ -16,7 +16,8 @@ export const traducoes = {
     placeholderDescricao: "Descrição",
     dividasPendentes: "Valores a Receber",
     pagamentoDivida: "Recebimento",
-    frase: "Controle financeiro simples e seguro no seu telemóvel"
+    frase: "Assuma o controle do seu dinheiro"
+
   },
 
   es: {
@@ -36,7 +37,8 @@ export const traducoes = {
     placeholderDescricao: "Descripción",
     dividasPendentes: "Valores por cobrar",
     pagamentoDivida: "Cobro",
-    frase: "Control financiero simple y seguro en tu móvil"
+    frase: "Toma el control de tu dinero"
+
   },
 
   en: {
@@ -56,6 +58,7 @@ export const traducoes = {
     placeholderDescricao: "Description",
     dividasPendentes: "Amounts to Receive",
     pagamentoDivida: "Payment received",
-    frase: "Simple and secure finance control on your phone"
+    frase: "Take control of your money"
+
   }
 };
