@@ -16,7 +16,8 @@ export const traducoes = {
     placeholderDescricao: "Descrição",
     dividasPendentes: "Valores a Receber",
     pagamentoDivida: "Recebimento",
-    frase: "Assuma o controle do seu dinheiro"
+    frase: "Take control of your money"
+
 
   },
 
@@ -37,7 +38,7 @@ export const traducoes = {
     placeholderDescricao: "Descripción",
     dividasPendentes: "Valores por cobrar",
     pagamentoDivida: "Cobro",
-    frase: "Toma el control de tu dinero"
+    frase: "Take control of your money"
 
   },
 
