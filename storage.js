@@ -1,4 +1,4 @@
- const STORAGE_KEY = 'dados';
+const STORAGE_KEY = 'dados';
 const IDIOMA_KEY = 'idioma';
 
 export function carregarDados() {
@@ -9,8 +9,14 @@ export function salvarDados(dados) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(dados));
 }
 
-return localStorage.getItem(IDIOMA_KEY) || 'es';
+export function carregarIdioma() {
+  const idiomaGuardado = localStorage.getItem(IDIOMA_KEY);
 
+  if (idiomaGuardado) return idiomaGuardado;
+
+  // idioma padrão inicial (Espanha)
+  return 'es';
+}
 
 
 export function salvarIdioma(idioma) {
