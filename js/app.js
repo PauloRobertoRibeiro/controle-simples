@@ -25,12 +25,31 @@ function atualizarInterfaceIdioma() {
 
 // ===== Limite FREE =====
 function checarLimiteFree() {
-  if (!versaoPro && dados.length >= 30) {
-    alert("Has alcanzado el límite de la versión gratuita (30 movimientos).");
+  if (!versaoPro && dados.length >= 15) {
+
+    const irPro = confirm(
+`You reached the free limit (15 entries).
+
+Unlock PRO version:
+📊 Charts
+☁ Backup
+🔒 Unlimited use
+
+Price: 3€ (lifetime)
+
+Press OK to unlock PRO now`
+    );
+
+    if (irPro) {
+      window.open("https://www.paypal.com/ncp/payment/FWMPLR2FM4P5S", "_blank");
+    }
+
     return false;
   }
   return true;
 }
+
+
 
 // ===== Adicionar transação =====
 function adicionarTransacaoSegura(tipo, valor, descricao) {
