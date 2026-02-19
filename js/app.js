@@ -23,7 +23,7 @@ function atualizarInterfaceIdioma() {
   document.getElementById('frase-app').textContent = traducoes[idiomaAtual].frase;
 }
 
-// ===== Limite FREE =====
+// ===== Limite FREE + pagamento automático =====
 function checarLimiteFree() {
   if (!versaoPro && dados.length >= 15) {
 
@@ -41,13 +41,40 @@ Press OK to unlock PRO now`
     );
 
     if (irPro) {
-      window.open("https://www.paypal.com/ncp/payment/FWMPLR2FM4P5S", "_blank");
+
+      const paypalLink = "https://www.paypal.com/ncp/payment/FWMPLR2FM4P5S";
+
+      alert("You will be redirected to PayPal to complete payment.");
+
+      window.open(paypalLink, "_blank");
+
+      // esperar cliente pagar e voltar
+      setTimeout(() => {
+
+        const pago = confirm("Did you complete the payment on PayPal?");
+
+        if (pago) {
+          localStorage.setItem("versaoPro", "true");
+          versaoPro = true;
+
+          alert("🎉 PRO version activated successfully!");
+
+          atualizarUI(dados, idiomaAtual, traducoes);
+          atualizarGrafico();
+        } else {
+          alert("Payment not confirmed.");
+        }
+
+      }, 8000); // espera 8 segundos para pagar
+
     }
 
     return false;
   }
+
   return true;
 }
+
 
 
 
