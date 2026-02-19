@@ -1,0 +1,22 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PRO Activated</title>
+</head>
+<body style="font-family:Arial;text-align:center;margin-top:60px;">
+
+<h2>🎉 PRO version activated!</h2>
+<p>Returning to app...</p>
+
+<script>
+localStorage.setItem("versaoPro", "true");
+
+// volta ao app
+setTimeout(() => {
+  window.location.href = "index.html";
+}, 2000);
+</script>
+
+</body>
+</html>
