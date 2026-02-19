@@ -28,52 +28,33 @@ function checarLimiteFree() {
   if (!versaoPro && dados.length >= 15) {
 
     const irPro = confirm(
-`You reached the free limit (15 entries).
+`🚫 Free limit reached (15 entries)
 
-Unlock PRO version:
-📊 Charts
-☁ Backup
-🔒 Unlimited use
+You are actively using Control Smart.
 
-Price: 3€ (lifetime)
+Upgrade now and unlock:
 
-Press OK to unlock PRO now`
+✔ Unlimited transactions
+✔ Visual charts
+✔ Backup & restore
+✔ Lifetime access (no subscription)
+
+🔥 Launch offer: 3€ instead of 9€
+
+This price will increase soon.
+
+Press OK to upgrade now.`
     );
 
     if (irPro) {
-
-      const paypalLink = "https://www.paypal.com/ncp/payment/FWMPLR2FM4P5S";
-
-      alert("You will be redirected to PayPal to complete payment.");
-
-      window.open(paypalLink, "_blank");
-
-      // esperar cliente pagar e voltar
-      setTimeout(() => {
-
-        const pago = confirm("Did you complete the payment on PayPal?");
-
-        if (pago) {
-          localStorage.setItem("versaoPro", "true");
-          versaoPro = true;
-
-          alert("🎉 PRO version activated successfully!");
-
-          atualizarUI(dados, idiomaAtual, traducoes);
-          atualizarGrafico();
-        } else {
-          alert("Payment not confirmed.");
-        }
-
-      }, 8000); // espera 8 segundos para pagar
-
+      window.open("https://www.paypal.com/ncp/payment/FWMPLR2FM4P5S", "_blank");
     }
 
     return false;
   }
-
   return true;
 }
+
 
 
 
